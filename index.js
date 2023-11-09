@@ -73,23 +73,34 @@ function btnMintAmount(type) {
   }
 }
 
-async function mint(){
-  await window.ethereum.send('eth_requestAccounts');
-  window.web3 = new Web3(window.ethereum);
-  contract = new web3.eth.Contract(ABI, ADDRESS);
-  
-  if(contract){
-      var mintAmount = document.getElementById("txtMintAmount").innerHTML;
-      var transaction = await contract.methods.Publicmint(mintAmount).send(
-          { from : WalletAddress,
-            value : 0.0001 * mintAmount * 10 ** 18
-          }).on('error',function(error){
+async function mint() {
+  if (window.ethereum) {
+    await window.ethereum.send("eth_requestAccounts");
+    window.web3 = new Web3(window.ethereum);
+    contract = new web3.eth.Contract(ABI, ADDRESS);
+
+    if (isConnected) {
+      if (contract) {
+        {
+          var mintAmount = document.getElementById("txtMintAmount").innerHTML;
+          var transaction = await contract.methods
+            .SuwonMint(mintAmount)
+            .send({ from: WalletAddress, value: 0.0001 * mintAmount * 10 ** 18 })
+            .on("error", function (error) {
               alert("Mint error!");
               console.log("Mint - Error : " + error);
-          }).then(function(receipt){
-              alert("Mint Success!");
+            })
+            .then(function (receipt) {
+              alert("Congrats!");
               console.log("Mint - success : " + receipt);
-        });
-      console.log("Mint - transaction : " + transaction);
-  }   
+            });
+          console.log("Mint - transaction : " + transaction);
+        }
+      }
+    } else {
+      connectWallet();
+    }
+  } else {
+    alert("To link your wallet on Google Chrome or Brave browser!");
+  }
 }
