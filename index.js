@@ -36,13 +36,8 @@ async function connectWallet() {
     var txtAccount = accounts[0].substr(0,5)+'...'+accounts[0].substr(37,42);
     document.getElementById("txtConnectWalletBtn").innerHTML = txtAccount;
     document.getElementById("txtWalletAddress").innerHTML = txtAccount;
-    /*
-    document.getElementById("txtWalletAddress").innerHTML = WalletAddress;
-    document.getElementById("walletInfo").style.display = "block";
-    document.getElementById("btnConnectWallet").style.display = "none";
-    */
   } else {
-    alert("To link your wallet on High Run Poker Club's website, you will need to extend your Metamask wallet using Google Chrome or Brave browser!");
+    alert("You will need to extend your Metamask wallet using Google Chrome or Brave browser!");
   }
 }
 
@@ -85,23 +80,20 @@ async function mint() {
     contract = new web3.eth.Contract(ABI, ADDRESS);
 
     if (isConnected) {
-
-      //alert("High Run Poker Club's NFT sales will open in June 26th");
-
       if (contract) {
         if (web3.utils.fromWei(WalletBalance) < 0.054) {
           alert("You need more Ethereum(over 0.054ETH + Gas fee)");
         } else {
           var mintAmount = document.getElementById("txtMintAmount").innerHTML;
           var transaction = await contract.methods
-            .HighRunPCMint(mintAmount)
+            .SuwonMint(mintAmount)
             .send({ from: WalletAddress, value: 0.054 * mintAmount * 10 ** 18 })
             .on("error", function (error) {
               alert("Mint error!");
               console.log("Mint - Error : " + error);
             })
             .then(function (receipt) {
-              alert("Congrats! Your High Run Poker Club NFT purchase is successful! Check your wallet!");
+              alert("Congrats!");
               console.log("Mint - success : " + receipt);
             });
           console.log("Mint - transaction : " + transaction);
@@ -111,6 +103,6 @@ async function mint() {
       connectWallet();
     }
   } else {
-    alert("To link your wallet on High Run Poker Club's website, you will need to extend your Metamask wallet using Google Chrome or Brave browser!");
+    alert("you will need to extend your Metamask wallet using Google Chrome or Brave browser!");
   }
 }
