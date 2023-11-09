@@ -1,8 +1,9 @@
 /*
 Ethereum = 1
-Goerli 테스트 네트워크 = 5
+Rinkeby = 4
 */
 const Network = 5;
+
 (async () => {
   if (window.ethereum) {
     setMintCount();
@@ -30,13 +31,18 @@ async function connectWallet() {
     WalletBalance = await web3.eth.getBalance(WalletAddress);
 
     isConnected = true;
-    document.getElementById("txtMintBtn").innerHTML = "Mint buy";
+    document.getElementById("txtMintBtn").innerHTML = "Buy NFTs";
     document.getElementById("txtWalletBalance").innerHTML = web3.utils.fromWei(WalletBalance).substr(0,8);
     var txtAccount = accounts[0].substr(0,5)+'...'+accounts[0].substr(37,42);
     document.getElementById("txtConnectWalletBtn").innerHTML = txtAccount;
     document.getElementById("txtWalletAddress").innerHTML = txtAccount;
+    /*
+    document.getElementById("txtWalletAddress").innerHTML = WalletAddress;
+    document.getElementById("walletInfo").style.display = "block";
+    document.getElementById("btnConnectWallet").style.display = "none";
+    */
   } else {
-    alert("You need Metamask first!");
+    alert("To link your wallet on High Run Poker Club's website, you will need to extend your Metamask wallet using Google Chrome or Brave browser!");
   }
 }
 
@@ -79,20 +85,23 @@ async function mint() {
     contract = new web3.eth.Contract(ABI, ADDRESS);
 
     if (isConnected) {
+
+      //alert("High Run Poker Club's NFT sales will open in June 26th");
+
       if (contract) {
-        if (web3.utils.fromWei(WalletBalance) < 0.0001) {
-          alert("You need more Ethereum");
+        if (web3.utils.fromWei(WalletBalance) < 0.054) {
+          alert("You need more Ethereum(over 0.054ETH + Gas fee)");
         } else {
           var mintAmount = document.getElementById("txtMintAmount").innerHTML;
           var transaction = await contract.methods
-            .Publicmint(mintAmount)
-            .send({ from: WalletAddress, value: 0.0001 * mintAmount * 10 ** 18 })
+            .HighRunPCMint(mintAmount)
+            .send({ from: WalletAddress, value: 0.054 * mintAmount * 10 ** 18 })
             .on("error", function (error) {
               alert("Mint error!");
               console.log("Mint - Error : " + error);
             })
             .then(function (receipt) {
-              alert("Mint Success!");
+              alert("Congrats! Your High Run Poker Club NFT purchase is successful! Check your wallet!");
               console.log("Mint - success : " + receipt);
             });
           console.log("Mint - transaction : " + transaction);
@@ -102,6 +111,6 @@ async function mint() {
       connectWallet();
     }
   } else {
-    alert("You need Metamask first!");
+    alert("To link your wallet on High Run Poker Club's website, you will need to extend your Metamask wallet using Google Chrome or Brave browser!");
   }
 }
