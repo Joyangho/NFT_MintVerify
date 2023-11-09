@@ -13,7 +13,7 @@ const Network = 5;
 var WalletAddress = "";
 var WalletBalance = "";
 
-var isConnected = true;
+var isConnected = false;
 
 async function connectWallet() {
   if (window.ethereum) {
