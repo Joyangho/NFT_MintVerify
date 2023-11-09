@@ -30,14 +30,13 @@ async function connectWallet() {
     WalletAddress = accounts[0];
     WalletBalance = await web3.eth.getBalance(WalletAddress);
 
-    isConnected = true;
-    document.getElementById("txtMintBtn").innerHTML = "Buy NFTs";
-    document.getElementById("txtWalletBalance").innerHTML = web3.utils.fromWei(WalletBalance).substr(0,8);
-    var txtAccount = accounts[0].substr(0,5)+'...'+accounts[0].substr(37,42);
-    document.getElementById("txtConnectWalletBtn").innerHTML = txtAccount;
-    document.getElementById("txtWalletAddress").innerHTML = txtAccount;
-  } else {
-    alert("To link your wallet on website, you will need to extend your Metamask wallet using Google Chrome or Brave browser!");
+    if(web3.utils.fromWei(WalletBalance) < 0.0001){
+      alert("You need more Ethereum");
+  }else{
+      document.getElementById("txtWalletAddress").innerHTML = WalletAddress;
+      document.getElementById("txtWalletBalance").innerHTML = web3.utils.fromWei(WalletBalance);
+      document.getElementById("walletInfo").style.display = "block";
+      document.getElementById("btnConnectWallet").style.display = "none";
   }
 }
 
