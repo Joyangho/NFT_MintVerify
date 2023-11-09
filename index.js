@@ -65,7 +65,7 @@ function btnMintAmount(type) {
       }
       break;
     case "plus":
-      if (amount < 10) {
+      if (amount < 3) {
         amount += 1;
         document.getElementById("txtMintAmount").innerHTML = amount;
       }
@@ -81,13 +81,13 @@ async function mint() {
 
     if (isConnected) {
       if (contract) {
-        if (web3.utils.fromWei(WalletBalance) < 0.054) {
+        if (web3.utils.fromWei(WalletBalance) < 0.01) {
           alert("You need more Ethereum(over 0.054ETH + Gas fee)");
         } else {
           var mintAmount = document.getElementById("txtMintAmount").innerHTML;
           var transaction = await contract.methods
             .SuwonMint(mintAmount)
-            .send({ from: WalletAddress, value: 0.054 * mintAmount * 10 ** 18 })
+            .send({ from: WalletAddress, value: 0.01 * mintAmount * 10 ** 18 })
             .on("error", function (error) {
               alert("Mint error!");
               console.log("Mint - Error : " + error);
