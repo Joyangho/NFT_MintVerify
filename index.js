@@ -30,16 +30,7 @@ async function connectWallet() {
     WalletAddress = accounts[0];
     WalletBalance = await web3.eth.getBalance(WalletAddress);
 
-    if(web3.utils.fromWei(WalletBalance) < 0.0001){
-      alert("You need more Ethereum");
   }
-  else{
-      document.getElementById("txtWalletAddress").innerHTML = WalletAddress;
-      document.getElementById("txtWalletBalance").innerHTML = web3.utils.fromWei(WalletBalance);
-      document.getElementById("walletInfo").style.display = "block";
-      document.getElementById("btnConnectWallet").style.display = "none";
-  }
-}
 }
 
 async function setMintCount() {
