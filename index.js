@@ -32,12 +32,14 @@ async function connectWallet() {
 
     if(web3.utils.fromWei(WalletBalance) < 0.0001){
       alert("You need more Ethereum");
-  }else{
+  }
+  else{
       document.getElementById("txtWalletAddress").innerHTML = WalletAddress;
       document.getElementById("txtWalletBalance").innerHTML = web3.utils.fromWei(WalletBalance);
       document.getElementById("walletInfo").style.display = "block";
       document.getElementById("btnConnectWallet").style.display = "none";
   }
+}
 }
 
 async function setMintCount() {
