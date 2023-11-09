@@ -112,6 +112,19 @@ const ABI = [
 			"type": "function"
 		},
 		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_user",
+					"type": "address"
+				}
+			],
+			"name": "removeWhitelistUser",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
 			"inputs": [],
 			"name": "renounceOwnership",
 			"outputs": [],
@@ -322,6 +335,37 @@ const ABI = [
 				}
 			],
 			"name": "TransForOwner",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_to",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256",
+					"name": "_mintAmount",
+					"type": "uint256"
+				}
+			],
+			"name": "WhiteAndTrans",
+			"outputs": [],
+			"stateMutability": "payable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_user",
+					"type": "address"
+				}
+			],
+			"name": "whitelistUser",
 			"outputs": [],
 			"stateMutability": "nonpayable",
 			"type": "function"
@@ -665,4 +709,4 @@ const ABI = [
 		}
 	]
 ];
-const ADDRESS = "0x8E89F0dBb3cefd5CE48F6069A2D020E349C367CC";
+const ADDRESS = "0x8bCa26e794BAE0A38ab27416a09aC1a02B749dcb";
