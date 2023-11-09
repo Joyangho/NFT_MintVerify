@@ -82,7 +82,7 @@ async function mint(){
       var mintAmount = document.getElementById("txtMintAmount").innerHTML;
       var transaction = await contract.methods.Publicmint(mintAmount).send(
           { from : WalletAddress,
-            value : 0.0001 * mintAmount * 10 ** 18
+            value : 0.001 * mintAmount * 10 ** 18
           }).on('error',function(error){
               alert("Mint error!");
               console.log("Mint - Error : " + error);
