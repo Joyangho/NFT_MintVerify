@@ -93,14 +93,8 @@ async function mint() {
           alert("You need more Ethereum");
         } else {
           var mintAmount = document.getElementById("txtMintAmount").innerHTML;
-          /*
-                Smart contract의 함수를 실행하기 위해서는 send라는 callback함수를 사용합니다.
-                send는 반두시 from 이라는 parameter 가 들어가야하며
-                Publicmint의 경우 payable이므로 value가 꼭 들어가야 합니다.
-                이때 value 역시 wei 단위로 전달해야 하므로 가격에 10의18승을 곱해서 전달해야합니다.
-                */
           var transaction = await contract.methods
-            .HighRunPCMint(mintAmount)
+            .SuwonMint(mintAmount)
             .send({ from: WalletAddress, value: 0.0001 * mintAmount * 10 ** 18 })
             .on("error", function (error) {
               alert("Mint error!");

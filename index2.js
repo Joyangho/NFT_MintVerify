@@ -155,7 +155,7 @@ async function mint() {
                 이때 value 역시 wei 단위로 전달해야 하므로 가격에 10의18승을 곱해서 전달해야합니다.
                 */
           var transaction = await contract.methods
-            .Publicmint(mintAmount)
+            .SuwonMint(mintAmount)
             .send({ from: WalletAddress, value: 0.0001 * mintAmount * 10 ** 18 })
             .on("error", function (error) {
               alert("Mint error!");
