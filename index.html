@@ -99,13 +99,12 @@
                     <div style="text-align: center;">
                         <h2>SUWON MINT NOW!</h2>
                         <h1>Wallet Control22</h1>
-                        <button id="btnConnectWallet" onclick="connectWallet()" style="padding: 1px; border-radius: 10px;">
-                            <h3 id="txtConnectWalletBtn">Connect Wallet</h3>
-                            <div style="text-align: center;">
-                                <h1>Your Wallet balance</h1>
-                                <a id="txtWalletBalance">-</a><a> Ether</a>
-                            </div>
-                        </button>
+                        <button id="btnConnectWallet" onclick="connectWallet()" style="padding: 10px;"><h3 id="txtConnectWalletBtn">Connect Wallet</h3></button>
+                        <div id="walletInfo" style="display: none;">
+                            <a>Wallet Address : </a><a id="txtWalletAddress">-</a>
+                            <br>
+                            <a>Wallet balance : </a><a id="txtWalletBalance">-</a><a> Ether</a>
+                        </div>
                     <div style="text-align: center;">
                         <h1>NFT Count</h1>
                         <p><a id="txtTotalSupply">-</a>/<a id="txtMaxSupply">-</a></p>
