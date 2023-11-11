@@ -1,3 +1,5 @@
+const ADDRESS = "0x30a1E1ce735E9b0289d376E31D30F7ceC0c562EB";
+
 const ABI = [
 	[
 		{
@@ -709,4 +711,3 @@ const ABI = [
 		}
 	]
 ];
-const ADDRESS = "0x30a1E1ce735E9b0289d376E31D30F7ceC0c562EB";

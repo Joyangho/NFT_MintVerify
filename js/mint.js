@@ -1,6 +1,7 @@
 /*
 Ethereum = 1
 Rinkeby = 4
+mumbai = 80001
 */
 const Network = 80001;
 
