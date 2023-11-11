@@ -39,9 +39,7 @@ async function connectWallet() {
     document.getElementById("txtMintBtn").innerHTML = "Mint";
 
     document.getElementById("txtWalletAddress").innerHTML = txtAccount;
-    document.getElementById("txtWalletBalance").innerHTML = web3.utils
-      .fromWei(WalletBalance)
-      .substr(0, 5);
+    document.getElementById("txtWalletBalance").innerHTML = web3.utils.fromWei(WalletBalance).substr(0, 10);
     document.getElementById("walletInfo").style.display = "block";
     document.getElementById("btnConnectWallet").style.display = "none";
   } else {
