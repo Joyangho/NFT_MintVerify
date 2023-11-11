@@ -1,4 +1,4 @@
-const ADDRESS = "0x30a1E1ce735E9b0289d376E31D30F7ceC0c562EB";
+const ADDRESS = "0x9173DAac102B7Efe05f61BE7A8A38b4D8Dfe51Be";
 
 const ABI = [
 	[
@@ -115,7 +115,7 @@ const ABI = [
 					"type": "uint256"
 				}
 			],
-			"name": "SuwonMint",
+			"name": "HighRunPCMint",
 			"outputs": [],
 			"stateMutability": "payable",
 			"type": "function"
