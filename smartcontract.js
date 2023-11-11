@@ -1,5 +1,4 @@
 const ABI = [
-	[
 		{
 			"inputs": [
 				{
@@ -611,6 +610,5 @@ const ABI = [
 			"stateMutability": "view",
 			"type": "function"
 		}
-	]
 ];
 const ADDRESS = "0xEeF053FAD52b386897E78CcDF48e1704d2e83A6C";
