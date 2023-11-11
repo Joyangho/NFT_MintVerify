@@ -1,0 +1,263 @@
+
+* {
+    margin: 0;
+    padding: 0;
+	font-family: 'Roboto', sans-serif;
+}
+
+html,
+body{
+width:100%;
+overflow-x:hidden;
+background-color: black;
+}
+
+ul {
+	list-style: none;
+	margin: 0px;
+}
+
+p {
+	color: #7a7a7a;
+	font-size: 14px;
+	line-height: 24px;
+}
+a {
+	color: black;
+}
+
+.mint-page{
+/*	background-color: #2369a1;*/
+	background-image: url(../img/mint-page.JPG);
+	background-size: 100% 100%;
+	
+}
+.mint-page h1{
+	font-size: 2rem;
+	color: rgb(255, 255, 255);
+	font-family: 'Do Hyeon', sans-serif;
+}
+.mint-page h2{
+	font-size: 3rem;
+	color: rgb(255, 255, 255);
+	font-family: 'Black Han Sans', sans-serif;
+}
+.mint-page a{
+	font-size: 1rem;
+	color: rgb(255, 255, 255);
+}
+
+.mint-page p{
+	font-size: 2rem;
+	color: white;
+}
+
+.mint-tm-bg-white-transparent {
+	padding: 30px;
+	background-color: rgba(0, 0, 0, 0);
+	max-width: 600px;
+	border-radius: 30px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#btnConnectWallet {
+	position: relative;
+	width: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: hidden;
+	border: 1px solid;
+	font-weight: 300;
+	font-size: 20px;
+	transition: 0.5s;
+	letter-spacing: 1px;
+	border-radius: 8px;
+	background-color: rgb(233, 232, 230);
+	border: 2px solid black;
+	box-shadow: 0 0 30px 0 black;
+	font-family: 'Fredoka One', cursive;
+}
+#btnConnectWallet:hover{
+	background-color: rgb(204, 199, 199);
+	color: black;
+}
+#MintBtn{
+	position: relative;
+	width: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: hidden;
+	border: 1px solid;
+	font-weight: 300;
+	font-size: 20px;
+	transition: 0.5s;
+	letter-spacing: 1px;
+	border-radius: 8px;
+	background-color: rgb(233, 232, 230);
+	border: 2px solid black;
+	box-shadow: 0 0 30px 0 black;
+	font-family: 'Fredoka One', cursive;
+}
+
+#MintBtn:hover{
+	background-color: rgb(223, 211, 211);
+	color: black;
+}
+
+#btnMintAmount{
+	position: relative;
+	width: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: hidden;
+	border: 1px solid;
+	font-weight: 300;
+	font-size: 20px;
+	transition: 0.5s;
+	letter-spacing: 1px;
+	border-radius: 8px;
+	background-color: rgb(233, 232, 230);
+	border: 2px solid black;
+	box-shadow: 0 0 30px 0 black;
+	font-family: 'Fredoka One', cursive;
+}
+
+
+.main-mint{
+	text-align: center;
+}
+
+.button-mint {
+    position: relative;
+    width: 100px;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    border: 1px solid;
+    font-weight: 300;
+    font-size: 20px;
+    transition: 0.5s;
+    letter-spacing: 1px;
+    border-radius: 8px;
+	background-color: #0081cc;
+	border: 2px solid #1b93d8;
+	box-shadow: 0 0 30px 0 #1b93d8;
+  }
+  .button-mint button {
+    width: 101%;
+    height: 100%;
+    font-weight: 300;
+    font-size: 23px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    background: rgb(255, 255, 255);
+    -webkit-mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
+    mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
+    -webkit-mask-size: 2300% 100%;
+    mask-size: 2300% 100%;
+    border: none;
+    color: white;
+    cursor: pointer;
+    -webkit-animation: ani2 0.7s steps(22) forwards;
+    animation: ani2 0.7s steps(22) forwards;
+  }
+  .button-mint button:hover {
+    -webkit-animation: ani 0.7s steps(22) forwards;
+    animation: ani 0.7s steps(22) forwards;
+  }
+  
+  .button-mint a{
+      text-decoration-line: none;
+	  font-family: 'Fredoka One', cursive;
+  
+  }
+
+
+.mas-mint {
+    position: absolute;
+    color: black;
+    text-align: center;
+    width: 101%;
+	margin-top: 8px;
+	font-family: 'Fredoka One', cursive;
+    font-weight: 700;
+    position: absolute;
+    font-size: 23px;
+    overflow: hidden;
+    font-weight: bold;
+  }
+
+.mint-bg{
+	text-align: center;
+}
+.connect-bg h2{
+	font-size: 3vw;
+}
+.connect-button {
+	background-color: rgba(0, 0, 0, 0.308);
+	text-transform: uppercase;
+	margin-top: 10px;
+	text-decoration: none;
+	border-radius: 10px;
+	border-width: 1px;
+	margin-left: 30px;
+	padding: 0px 10px 0px 10px;
+} 
+.connect-button a{
+	font-size: 1.5rem;
+	color: white;
+	text-decoration-line: none;
+	text-align: center;
+}
+
+  
+
+#main-humans{
+	max-width: 30%;
+	height: auto;
+	display: block;
+	margin: auto;
+}
+
+#hrpc-about .service-item {
+	text-align: center;
+}
+
+  .marquee-container-main{
+	overflow-x: hidden !important;
+    display: flex !important;
+    flex-direction: row !important;
+    position: relative;
+    width: 100%;
+	background:black;
+	font-size: 2rem;
+	color: white;
+	box-shadow: 0 0 30px 0 #cc0000a2;
+  }
+
+  .marquee{
+	flex: 0 0 auto;
+	min-width: 100%;
+	z-index: 1;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	animation: scroll var(--duration) linear var(--delay) var(--iteration-count);
+	animation-play-state: var(--play);
+	animation-delay: var(--delay);
+	animation-direction: var(--direction);
+  }
+  .marquee span{
+	font-family: 'Fredoka One', cursive;
+  }
+  @keyframes scroll {
+	  0% {
+		  transform: translateX(0%);
+	  }
+	  100% {
+		  transform: translateX(-100%);
+	  }
+  }
