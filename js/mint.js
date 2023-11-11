@@ -2,7 +2,7 @@
 Ethereum = 1
 Rinkeby = 4
 */
-const Network = 5;
+const Network = 80001;
 
 (async () => {
   if (window.ethereum) {
