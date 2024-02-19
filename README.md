@@ -1,5 +1,6 @@
 # 체인
-- mumbai
+- goerliETH
+- 0.0001ETH
 
 # 메타마스크 메인 지갑
 - 0x74B76eEde2291f17f1597018aB45C3272c3E106A
