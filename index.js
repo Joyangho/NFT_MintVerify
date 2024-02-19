@@ -1,1 +1,179 @@
-eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('N O=5;(j()=>{3(2.8){P()}})();e r="";e w="";e x=Q;j f G(){3(2.8){4 2.8.s("y");2.9=k z(2.8);3(2.9.19.1a!=O){h("1b 1c 1d 1e","","1f");A}e a=4 9.t.1g();r=a[0];w=4 9.t.1h(r);x=R;e b=a[0].H(0,5)+"..."+a[0].H(1i,1j);6.7("1k").g=b;6.7("1l").g="n";6.7("1m").g=b;6.7("1n").g=9.S.T(w).H(0,5);6.7("1o").U.V="1p";6.7("1q").U.V="1r"}l{h("B C I J!")}}j f P(){4 2.8.s("y");2.9=k z(2.8);d=k 9.t.K(L,M);3(d){e a=4 d.o.1s().u();6.7("1t").g=a;e a=4 d.o.1u().u();6.7("1v").g=a}}f 1w(a){e b=6.7("D").g*1;p.q(b);1x(a){W"1y":3(b>1){b-=1;6.7("D").g=b}X;W"1z":3(b<10){b+=1;6.7("D").g=b}X}}j f 1A(){3(2.8){4 2.8.s("y");2.9=k z(2.8);d=k 9.t.K(L,M);3(x){3(d){3(9.S.T(w)<0.Y){h("B C 1B 1C")}l{e b=6.7("D").g;e c=4 d.o.1D(b).s({1E:r,1F:0.Y*b*10**18}).1G("Z",f(a){h("n Z!");p.q("n - 1H : "+a)}).1I(f(a){h("n 1J!");p.q("n - 1K : "+a)});p.q("n - 1L : "+c)}}}l{G()}}l{h("B C I J!")}}j f 11(a){m 12=4 d.o.1M(a).u();m v=[];13(m i=0;i<12;i++){m E=4 d.o.1N(a,i).u();v.1O(E)}A v}j f 14(a){m v=4 11(a);13(m E 1P v){m 15=4 d.o.1Q(E).u();3(15===a){A R}}A Q}j f 16(){3(2.8){4 2.8.s("y");2.9=k z(2.8);d=k 9.t.K(L,M);3(x){3(d){N 17=4 14(r);3(17){p.q(\'인증된 F 오너입니다.\');h(\'인증된 F 오너입니다.\');2.1R.1S=\'1T.1U\'}l{p.q(\'F 오너가 아닙니다.\');h(\'F 오너가 아닙니다.\')}}}l{G()}}l{h("B C I J!")}}6.7("1V").1W("1X",f(){16()})',62,122,'||window|if|await||document|getElementById|ethereum|web3||||contract|var|function|innerHTML|alert||async|new|else|let|Mint|methods|console|log|WalletAddress|send|eth|call|tokenIds|WalletBalance|isConnected|eth_requestAccounts|Web3|return|You|need|txtMintAmount|tokenId|NFT|connectWallet|substr|Metamask|first|Contract|ABI|ADDRESS|const|Network|setMintCount|false|true|utils|fromWei|style|display|case|break|0001|error||getOwnedTokens|balance|for|isOwner|ownerAddress|checkOwnership|isNFTOwner||_provider|networkVersion|Please|connect|correct|network|warning|getAccounts|getBalance|37|42|txtConnectWalletBtn|txtMintBtn|txtWalletAddress|txtWalletBalance|walletInfo|block|btnConnectWallet|none|totalSupply|txtTotalSupply|maxSupply|txtMaxSupply|btnMintAmount|switch|minus|plus|mint|more|Ethereum|SuwonMint|from|value|on|Error|then|Success|success|transaction|balanceOf|tokenOfOwnerByIndex|push|of|ownerOf|location|href|ownership|html|checkOwnershipButton|addEventListener|click'.split('|'),0,{}))
+/*
+Ethereum = 1
+Goerli 테스트 네트워크 = 5
+Polygon Mainnet = 137;
+Polygon Mumbai testnet = 80001;
+*/
+const Network = 5;
+
+(async () => {
+  if (window.ethereum) {
+    setMintCount();
+  }
+})();
+
+var WalletAddress = "";
+var WalletBalance = "";
+
+var isConnected = false;
+
+async function connectWallet() {
+  if (window.ethereum) {
+    await window.ethereum.send("eth_requestAccounts");
+    window.web3 = new Web3(window.ethereum);
+    //Check network
+    if (window.web3._provider.networkVersion != Network) {
+      alert("Please connect correct network", "", "warning");
+      return;
+    }
+
+    //Get Account information
+    var accounts = await web3.eth.getAccounts();
+    WalletAddress = accounts[0];
+    WalletBalance = await web3.eth.getBalance(WalletAddress);
+
+    isConnected = true;
+    var txtAccount =
+      accounts[0].substr(0, 5) + "..." + accounts[0].substr(37, 42);
+    document.getElementById("txtConnectWalletBtn").innerHTML = txtAccount;
+    document.getElementById("txtMintBtn").innerHTML = "Mint";
+
+    document.getElementById("txtWalletAddress").innerHTML = txtAccount;
+    document.getElementById("txtWalletBalance").innerHTML = web3.utils
+      .fromWei(WalletBalance)
+      .substr(0, 5);
+    document.getElementById("walletInfo").style.display = "block";
+    document.getElementById("btnConnectWallet").style.display = "none";
+  } else {
+    alert("You need Metamask first!");
+  }
+}
+
+async function setMintCount() {
+  await window.ethereum.send("eth_requestAccounts");
+  window.web3 = new Web3(window.ethereum);
+  contract = new web3.eth.Contract(ABI, ADDRESS);
+
+  if (contract) {
+    var totalSupply = await contract.methods.totalSupply().call();
+    document.getElementById("txtTotalSupply").innerHTML = totalSupply;
+    var totalSupply = await contract.methods.maxSupply().call();
+    document.getElementById("txtMaxSupply").innerHTML = totalSupply;
+  }
+}
+
+function btnMintAmount(type) {
+  var amount = document.getElementById("txtMintAmount").innerHTML * 1;
+  console.log(amount);
+  switch (type) {
+    case "minus":
+      if (amount > 1) {
+        amount -= 1;
+        document.getElementById("txtMintAmount").innerHTML = amount;
+      }
+      break;
+    case "plus":
+      if (amount < 10) {
+        amount += 1;
+        document.getElementById("txtMintAmount").innerHTML = amount;
+      }
+      break;
+  }
+}
+
+async function mint() {
+  if (window.ethereum) {
+    await window.ethereum.send("eth_requestAccounts");
+    window.web3 = new Web3(window.ethereum);
+    contract = new web3.eth.Contract(ABI, ADDRESS);
+
+    if (isConnected) {
+      if (contract) {
+        if (web3.utils.fromWei(WalletBalance) < 0.0001) {
+          alert("You need more Ethereum");
+        } else {
+          var mintAmount = document.getElementById("txtMintAmount").innerHTML;
+          var transaction = await contract.methods
+            .SuwonMint(mintAmount)
+            .send({ from: WalletAddress, value: 0.0001 * mintAmount * 10 ** 18 })
+            .on("error", function (error) {
+              alert("Mint error!");
+              console.log("Mint - Error : " + error);
+            })
+            .then(function (receipt) {
+              alert("Mint Success!");
+              console.log("Mint - success : " + receipt);
+            });
+          console.log("Mint - transaction : " + transaction);
+        }
+      }
+    } else {
+      connectWallet();
+    }
+  } else {
+    alert("You need Metamask first!");
+  }
+}
+// 사용자가 소유하고 있는 모든 토큰 ID를 가져오는 함수
+async function getOwnedTokens(walletAddress) {
+  // 사용자가 소유하고 있는 토큰의 수를 조회
+  let balance = await contract.methods.balanceOf(walletAddress).call();
+  let tokenIds = [];
+
+  // 각 토큰에 대해 토큰 ID를 조회
+  for (let i = 0; i < balance; i++) {
+      let tokenId = await contract.methods.tokenOfOwnerByIndex(walletAddress, i).call();
+      tokenIds.push(tokenId);
+  }
+
+  return tokenIds;
+}
+
+async function isOwner(walletAddress) {
+  // 사용자가 소유하고 있는 모든 토큰 ID를 가져옵니다.
+  let tokenIds = await getOwnedTokens(walletAddress);
+  
+  // 각 토큰에 대해 소유권을 체크합니다.
+  for (let tokenId of tokenIds) {
+      let ownerAddress = await contract.methods.ownerOf(tokenId).call();
+      if (ownerAddress === walletAddress) {
+          return true;
+      }
+  }
+
+  // 모든 토큰에 대해 소유권이 없는 경우
+  return false;
+}
+
+async function checkOwnership() {
+if (window.ethereum) {
+  await window.ethereum.send("eth_requestAccounts");
+  window.web3 = new Web3(window.ethereum);
+  contract = new web3.eth.Contract(ABI, ADDRESS);
+
+  if (isConnected) {
+    if (contract) {
+      // NFT 오너쉽 확인
+      const isNFTOwner = await isOwner(WalletAddress);
+      if (isNFTOwner) {
+        console.log('인증된 NFT 오너입니다.');
+        alert('인증된 NFT 오너입니다.');
+        window.location.href = 'ownership.html';
+      } else {
+        console.log('NFT 오너가 아닙니다.');
+        alert('NFT 오너가 아닙니다.');
+      }
+    }
+  } else {
+    connectWallet();
+  }
+} else {
+  alert("You need Metamask first!");
+}
+}
+
+// 버튼 클릭 시 checkOwnership 함수를 호출하도록 설정합니다.
+document.getElementById("checkOwnershipButton").addEventListener("click", function() {
+  checkOwnership();
+}
+)
